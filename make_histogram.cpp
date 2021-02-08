@@ -16,7 +16,7 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string.hpp>
-/**/
+
 
 using namespace std;
 int color_list[] = {kBlack, kBlue, kGreen, kRed, kOrange, kYellow, kAzure+8, kPink+6, kViolet+1};
@@ -115,10 +115,12 @@ std::vector<std::string> SplitValueList(const std::string& _values_str, bool all
     return result;
 }
 
-int make_histogram(string files, string file_name = "all_paths", string variables = "Delta_X_vs_Eta,Delta_X_vs_Phi,Pull_X_vs_Eta,Pull_X_vs_Phi,Delta_Y_vs_Eta,Delta_Y_vs_Phi,Pull_Y_vs_Eta,Pull_Y_vs_Phi", string interesting_directories = "Run summary,"){
+int make_histogram(string files, string file_name = "all_paths", string variables = "Delta_X_vs_Eta,Delta_X_vs_Phi,Pull_X_vs_Eta,Pull_X_vs_Phi,Delta_Y_vs_Eta,Delta_Y_vs_Phi,Pull_Y_vs_Eta,Pull_Y_vs_Phi"){
     vector<string> file_list = SplitValueList(files, false, ",", true);
     vector<string> variables_list = SplitValueList(variables, false, ",", true);
-    vector<string> directories_list = SplitValueList(interesting_directories, false, ",", true);
+    string directory = "Run summary";
+    // if you want more specific directories put here
+    //vector<string> directories_list = {}
     vector<TFile*> files_open;
     for (auto file:file_list){
         TFile *f = new TFile(file.c_str(), "READ");
@@ -127,9 +129,12 @@ int make_histogram(string files, string file_name = "all_paths", string variable
     file_to_write.open((file_name+".txt").c_str());
     TList *keys = files_open[0]->GetListOfKeys();
     vector<string> paths;
-    for (auto directory : directories_list){
-        while (explore_paths(keys, paths, files_open[0], directory));
-    }
+    // if there will be a directories_list vector uncomment the following for loop and indent the wile
+    //for (auto directory : directories_list){
+    while (explore_paths(keys, paths, files_open[0], directory));
+    //}
+
+    // if you want to draw histograms in this CPP scrpit uncomment the following lines
     /*
     for (auto &var : variables_list){
         vector<string> paths_to_pass;
@@ -143,7 +148,7 @@ int make_histogram(string files, string file_name = "all_paths", string variable
         }
         //draw_histograms(var, paths_to_pass, files_open);
     }
-    file_to_write.close();*/
-
+    file_to_write.close();
+    */
 return 0;
 }

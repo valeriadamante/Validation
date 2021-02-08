@@ -1,0 +1,80 @@
+writee report
+copy text,
+link to https://docs.google.com/document/d/1UO2TM5ywA3mbe3sASo8du9TWxdU_uH5psEOyJsHFHkQ/edit?usp=sharing
+
+link to validation report
+validated sample 
+targedt
+References
+summary
+some example plots
+
+group meeting in moring
+
+***********************************************************************
+
+Dear all,
+
+You can find here the validation report for the campaign: 11_3_0_pre1 with pile up and without pile up.
+Please let me know if something is missing.
+
+**************************************************************************
+No Pile Up case
+
+Validated sample: CMSSW_11_3_0_pre1 VS CMSSW_11_2_0_pre10 (No pileup)
+Target: /RelValTTbar_14TeV/CMSSW_11_3_0_pre1-113X_mcRun4_realistic_v1_2026D49noPU-v1/DQMIO (black)
+Reference: /RelValTTbar_14TeV/CMSSW_11_2_0_pre10-112X_mcRun4_realistic_v4_2026D49noPU-v1/DQMIO (blue)
+
+Summary: Overall comparisons for digis, clusters and rechits are OK. GENSIM has been regenerated. Discrepancies on the number of simulated vertices [5] and [6].
+
+Cluster charge TrackerPhase2ITCluster / Barrel / Layer4[1]
+Cluster size S TrackerPhase2OTCluster / EndCap_Side1 / TEDD_1 / Ring1 [2]
+Y-residual TrackerPhase2ITClusterV / EndCap_Side2 / FPix / Ring2 [3]
+Y-residual TrackerPhase2OTClusterV / EndCap_Side1 / TEDD_2 / Ring12 [4]
+number of simulated vertices  TrackerPhase2ITDigi / SimTrackInfo [5]
+number of simulated vertices TrackerPhase2OTDigi / SimTrackInfo [6]
+Ratchet y position TrackerPhase2ITRecHit / EndCap_Side1 / FPix / Ring2 [7]
+Pull x TrackerPhase2ITRecHitV / EndCap_Side2 / EPix / Ring3 [8]
+
+*****************************************************************************
+Pile Up case
+
+Validated sample: CMSSW_11_3_0_pre1-PU200 VS CMSSW_11_2_0_pre10-PU25ns
+Target: /RelValTTbar_14TeV/CMSSW_11_3_0_pre1-PU_113X_mcRun4_realistic_v1_2026D49PU200-v1/DQMIO (black)
+Reference: /RelValTTbar_14TeV/CMSSW_11_2_0_pre10-PU25ns_112X_mcRun4_realistic_v4_2026D49PU200-v1/DQMIO (blue)
+
+Summary: Comparisons for Digis, Clusters and RecHits seem to be okay. GENSIM has been regenerated. Discrepancies on the number of simulated vertices [13] and [14].
+
+
+Cluster charge TrackerPhase2ITCluster / EndCap_Side2 / EPix / Ring1 [9]
+Cluster size S  TrackerPhase2OTCluster / EndCap_Side1 / TEDD_2 / Ring12 [10]
+X-residual  TrackerPhase2ITClusterV / EndCap_Side1 / EPix / Ring5 [11]
+Y-residual TrackerPhase2OTClusterV / EndCap_Side2 / TEDD_2 / Ring12 [12]
+number of simulated vertices  TrackerPhase2ITDigi / SimTrackInfo [13]
+number of simulated vertices TrackerPhase2OTDigi / SimTrackInfo [14]
+Rechit Y error vs eta TrackerPhase2ITRecHit / EndCap_Side2 / FPix / Ring2 [15]
+X-residual vs eta TrackerPhase2ITRecHitV / Barrel / Layer1 [16]
+
+Links:
+[1]https://tinyurl.com/y389oq2s
+[2]https://tinyurl.com/yxz9ya8m
+[3]https://tinyurl.com/y469outu
+[4]https://tinyurl.com/y3r5eh3v
+[5]https://tinyurl.com/y4krpy7g
+[6]https://tinyurl.com/yxrtrrd9
+[7]https://tinyurl.com/y3kkduzs
+[8]https://tinyurl.com/y2ov32fn
+[9]https://tinyurl.com/y5ratsv2
+[10]https://tinyurl.com/yyqk2qaf
+[11]https://tinyurl.com/y3r8cs7f
+[12]https://tinyurl.com/y5gohs37
+[13]https://tinyurl.com/yxl6ylf4
+[14]https://tinyurl.com/yxpcskzt
+[15]https://tinyurl.com/y2jxdbl2
+[16]https://tinyurl.com/y6m8r4hg
+
+***************************************************************************
+
+Best regards,
+
+Valeria D'Amante
