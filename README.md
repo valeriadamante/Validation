@@ -4,7 +4,8 @@ echo # Validation
 In this repository there are only the scripts to produce the plots for DQM.
 How to run the scripts:
 1. the python file accepts the following strings arguments:
-  1.0) 'machine' --> required, possible choices [local, lxplus] --> local must be customised with your local directory!
+  1.0) 'machine' --> required, possible choices [local, lxplus]. These ones are used in the directories dictionary. However it has to be customised with your local and lxplus input/output directories.
+
   1.1) '--reference'  required -->  reference file. It will be drawn in black
 
   1.2) '--targets'    required -->  target file(s) to compare. Must be written separated by comma (max number is 8).
@@ -21,14 +22,14 @@ How to run the scripts:
   is "CMSSW_11_2_0_phase2"
 
   1.5) '--dirsuffix'  not necessary required. It is an additional suffix for base directory name, and its default value
-  is null
+  is empty string
 
 2. The cpp file runs over the files and produces a file with all paths or a subset of paths according
 to different given options. It's run by python scripts if it does not find the txt file with all paths.
 
 Here you find some examples:
 - Simple one:
-  ```python make_histogram.py --reference DQM_V0001_R000000001__Global__CMSSW_11_2_0_pre10__RECO.root --targets DQM_V0001_R000000001__Global__CMSSW_11_3_0_pre1__RECO.root --dirsuffix _RECO ```
+  ```python make_histogram.py local --reference DQM_V0001_R000000001__Global__CMSSW_11_2_0_pre10__RECO.root --targets DQM_V0001_R000000001__Global__CMSSW_11_3_0_pre1__RECO.root --dirsuffix _RECO ```
 
   reference file = DQM_V0001_R000000001__Global__CMSSW_11_2_0_pre10__RECO.root
   target file = DQM_V0001_R000000001__Global__CMSSW_11_3_0_pre1__RECO.root

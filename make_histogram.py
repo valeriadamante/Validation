@@ -203,13 +203,13 @@ class histomaker:
             #canvas.Print(dir_name+histo_name+".pdf", "pdf")
 
 parser = argparse.ArgumentParser()
-parser.add_argument('machine', type=str, default="pccms65", choices=["lxplus", "local"])
+parser.add_argument('machine', type=str, default="local", choices=["lxplus", "local"])
 parser.add_argument('--reference', required=True, type=str, help= "input reference file")
 parser.add_argument('--targets', required=True, type=str, help= "input target files to compare separated by comma")
 parser.add_argument('--variables', required=False, type=str, default= "", help= "input variables separated by comma")
 parser.add_argument('--txtname', required=False, type=str, default="all_paths", help= "txt file with all paths")
 parser.add_argument('--dirsuffix', required=False, type=str, default="", help="additional suffix for base directory name")
-parser.add_argument('--topdir', required=False, type=str, default="../CMSSW_11_2_0_phase2", help="base directory name")
+parser.add_argument('--topdir', required=False, type=str, default="CMSSW_11_2_0_phase2", help="base directory name")
 args = parser.parse_args()
 
 # ****** dictionary for in/out directories ******
