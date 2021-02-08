@@ -222,8 +222,8 @@ if not os.path.exists(args.txtname+".txt"):
 # **** create list of files ****
 input_files = []
 rootfiles_path = "../RootFiles/"
-input_files.append(args.reference)
-for file in (args.targets).split(","):
+input_files.append(rootfiles_path+args.reference)
+for file in (rootfiles_path+args.targets).split(","):
     input_files.append(file)
 
 # **** initialize the class and its values ****
