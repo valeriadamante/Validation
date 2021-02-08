@@ -4,6 +4,7 @@ echo # Validation
 In this repository there are only the scripts to produce the plots for DQM.
 How to run the scripts:
 1. the python file accepts the following strings arguments:
+  1.0) 'machine' --> required, possible choices [local, lxplus] --> local must be customised with your local directory!
   1.1) '--reference'  required -->  reference file. It will be drawn in black
 
   1.2) '--targets'    required -->  target file(s) to compare. Must be written separated by comma (max number is 8).

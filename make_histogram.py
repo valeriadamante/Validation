@@ -38,7 +38,7 @@ R = 0.04*W_ref
 
 
 class histomaker:
-    top_level_dir = "../CMSSW_11_2_0_phase2"
+    top_level_dir = "CMSSW_11_2_0_phase2"
     opt_stat = 1111
     color_list = [kBlack, kBlue, kRed, kGreen, kOrange, kYellow, kAzure+8, kPink+6, kViolet+1]
     stop = True
@@ -56,7 +56,6 @@ class histomaker:
     files_open = []
     paths_file_name="all_paths.txt"
     paths = []
-    additional_suffix = ""
 
     def open_files(self, input_files):
         for file in input_files:
@@ -110,7 +109,7 @@ class histomaker:
         return title
 
     def dir_name(self, path):
-        dir_name = self.top_level_dir+self.additional_suffix+"/"
+        dir_name = self.top_level_dir+"/"
         if not os.path.exists(dir_name):
             os.makedirs(dir_name)
         write_index.write_php_file(dir_name)
@@ -204,6 +203,7 @@ class histomaker:
             #canvas.Print(dir_name+histo_name+".pdf", "pdf")
 
 parser = argparse.ArgumentParser()
+parser.add_argument('machine', type=str, default="pccms65", choices=["lxplus", "local"])
 parser.add_argument('--reference', required=True, type=str, help= "input reference file")
 parser.add_argument('--targets', required=True, type=str, help= "input target files to compare separated by comma")
 parser.add_argument('--variables', required=False, type=str, default= "", help= "input variables separated by comma")
@@ -211,6 +211,19 @@ parser.add_argument('--txtname', required=False, type=str, default="all_paths", 
 parser.add_argument('--dirsuffix', required=False, type=str, default="", help="additional suffix for base directory name")
 parser.add_argument('--topdir', required=False, type=str, default="../CMSSW_11_2_0_phase2", help="base directory name")
 args = parser.parse_args()
+
+# ****** dictionary for in/out directories ******
+dir_dict = {}
+dir_dict["local"]={}
+dir_dict["local"]["input"]="/Users/valeriadamante/Desktop/Dottorato/public/CMSSW_11_2_0_pre9/src/RootFiles/"
+dir_dict["local"]["output"]="/Users/valeriadamante/Desktop/Dottorato/public/CMSSW_11_2_0_pre9/src/"
+
+dir_dict["lxplus"]={}
+dir_dict["lxplus"]["input"]="/afs/cern.ch/work/v/vdamante/public/CMSSW_11_2_0_pre9/src/RootFiles/"
+dir_dict["lxplus"]["output"]="/afs/cern.ch/work/v/vdamante/public/CMSSW_11_2_0_pre9/src/"#"/eos/home-v/vdamante/www/phase2validation/"
+
+input_dir = dir_dict[args.machine]["input"]
+out_dir =  dir_dict[args.machine]['output']
 
 # **** create txt file with all paths  ****
 input_files_str = args.reference+","+args.targets
@@ -221,16 +234,14 @@ if not os.path.exists(args.txtname+".txt"):
 
 # **** create list of files ****
 input_files = []
-rootfiles_path = "../RootFiles/"
-input_files.append(rootfiles_path+args.reference)
-for file in (rootfiles_path+args.targets).split(","):
+input_files.append(input_dir+args.reference)
+for file in (input_dir+args.targets).split(","):
     input_files.append(file)
 
 # **** initialize the class and its values ****
 make_histogram = histomaker(input_files)
-make_histogram.file_name=args.txtname+".txt"        # file name with paths
-make_histogram.top_level_dir = args.topdir          # base directory name
-make_histogram.additional_suffix=args.dirsuffix     # directory suffix
+make_histogram.file_name=args.txtname+".txt"                            # file name with paths
+make_histogram.top_level_dir = out_dir+args.topdir+args.suffix          # base directory name
 
 # **** eventually initialize variables ****
 variables =[]
