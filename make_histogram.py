@@ -230,7 +230,7 @@ for file in (rootfiles_path+args.targets).split(","):
 make_histogram = histomaker(input_files)
 make_histogram.file_name=args.txtname+".txt"        # file name with paths
 make_histogram.top_level_dir = args.topdir          # base directory name
-make_histogram.additional_suffix=args.dirsuffix    # directory suffix
+make_histogram.additional_suffix=args.dirsuffix     # directory suffix
 
 # **** eventually initialize variables ****
 variables =[]
