@@ -1,0 +1,94 @@
+hltGetConfiguration /users/kandroso/tutorial2020/PixelTracks/V1 --full --offline --mc --unprescale --process TEST --globaltag auto:run3_mc_GRun --setup /dev/CMSSW_11_1_0/GRun/V10 --input /store/mc/RunIIAutumn18DR/VBFHToTauTau_M125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62NZS_102X_upgrade2018_realistic_v15-v1/60000/F21D1523-A8D2-E64D-A04B-873A3007D94D.root --max-events 10000 > hlt_mc.py
+
+c0->Draw("Hist");
+  gStyle->SetStatW(.19);
+
+  u0->Draw("SAMES Hist");
+
+  TPaveStats *st = (TPaveStats*)u0->FindObject("stats");
+  st->SetX1NDC(0.5);
+  st->SetX2NDC(0);
+
+  if i==2:
+      parentdir=p
+      if not os.path.exists(parentdir):
+          os.mkdir(parentdir)
+  if i==4:
+      dir.append(p)
+  if i==5:
+      subdir.append(p)
+  i=i+1
+
+  new_dir= dir[]
+  for p,q in zip(dir,subdir):
+      new_dir = parentdir+"/"+p+"/"+q
+      #print new_dir
+      if not os.path.exists(new_dir):
+          os.mkdir(new_dir)
+
+
+
+          s = htemp.GetListOfFunctions().FindObject("stats")
+        s.SetX1NDC (0.8)
+        s.SetX2NDC (0.6)
+
+
+
+
+
+
+
+
+    def get_directory(self):
+        file = self.files_open[0]
+        #dir = file.FindObjectAny("TrackerPhase2ITRecHitV")
+        #print dir.ClassName()
+        dir = ""
+        true=True
+        while(true):
+            if(gDirectory.GetNkeys()< 2 ):
+                for k in gDirectory.GetListOfKeys():
+                    #print k.IsFolder()
+                    #print k.GetName()
+                    if k.IsFolder():
+                        gDirectory.cd(k.GetName())
+                        #self.get_directory()
+                        continue
+                    else:
+                        true= False
+            else:
+                for k in gDirectory.GetListOfKeys():
+                    #print k.IsFolder()
+                    print k.GetName()
+                    if k.IsFolder():
+                        gDirectory.cd(k.GetName())
+                        #self.get_directory()
+                        continue
+                    else:
+                        true= False
+        dir=gDirectory.pwd()
+    '''
+    def explore_paths(self, keys):
+        found=True
+        for k in keys:
+            print k.GetClassName()
+            if k.GetClassName()=="TDirectoryFile":
+                dir = self.files_open[0].Get(k.ReadObj().GetPath())
+                keys2= dir.GetListOfKeys()
+                for j in keys2:
+                    if j.GetClassName()=="TDirectoryFile":
+                        print j.ReadObj().GetPath()
+                    else:
+                        print j
+                    keys.Add(j)
+                keys.Remove(k)
+            else:
+                found = False
+        return found
+
+    def get_paths(self):
+        file = self.files_open[0]
+        keys = file.GetListOfKeys()
+        while(self.explore_paths(keys)):
+            pass
+        #print keys.GetPath()
